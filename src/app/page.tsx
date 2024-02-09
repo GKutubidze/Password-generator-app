@@ -1,95 +1,79 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
 import styles from "./page.module.css";
+import InputComponent from "@/components/InputComponent/InputComponent";
+import Data from "./Data";
+import { DataItem } from "./Types/Types";
+import StrengthComponent from "@/components/StrengthComponent/StrengthComponent";
+import Button from "@/components/ButtonComponent/Button";
+import Slider from "@/components/SliderComponent/Slider";
+import OutputComponent from "@/components/OutputComponent/OutputComponent";
 
 export default function Home() {
+  const [clicked, setCklicked] = useState<boolean>(false);
+  const [generatedPassword, setGeneratedPassword] = useState<string>("");
+  const [passwordLength, setPasswordLength] = useState<number>(6);
+  const [includeUppercase, setIncludeUppercase] = useState(false);
+  const [includeLowercase, setIncludeLowercase] = useState(false);
+  const [includeNumbers, setIncludeNumbers] = useState(false);
+  const [includeSymbols, setIncludeSymbols] = useState(false);
+
+  const handlePasswordLength = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPasswordLength(parseInt(e.target.value, 10));
+  };
+
+ 
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+      <span className={styles.header}>Password generator</span>
+      <OutputComponent
+        generatedPassword={generatedPassword}
+        cklicked={clicked}
+        setCklicked={setCklicked}
+      />
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+      <div className={styles.generatePassword}>
+        <Slider
+          passwordLength={passwordLength}
+          handlePasswordLength={handlePasswordLength}
         />
-      </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+        <div className={styles.inputsContainer}>
+          {Data.map((item: DataItem, key: number) => {
+            return (
+              <InputComponent
+                content={item.content}
+                setIncludeUppercase={setIncludeUppercase}
+                setIncludeLowercase={setIncludeLowercase}
+                setIncludeNumbers={setIncludeNumbers}
+                setIncludeSymbols={setIncludeSymbols}
+                includeUppercase={includeUppercase}
+                includeLowercase={includeLowercase}
+                includeNumbers={includeNumbers}
+                includeSymbols={includeSymbols}
+                key={key}
+              />
+            );
+          })}
+        </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+        <StrengthComponent
+          generatedPassword={generatedPassword}
+          
+        />
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        <Button
+          setGeneratedPassword={setGeneratedPassword}
+          includeUppercase={includeUppercase}
+          includeLowercase={includeLowercase}
+          includeNumbers={includeNumbers}
+          includeSymbols={includeSymbols}
+          passwordLength={passwordLength}
+          setCklicked={setCklicked}
+          />
       </div>
     </main>
   );
 }
+

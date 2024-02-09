@@ -1,0 +1,11 @@
+.main button {
+    all: unset;
+    width: 100%;
+    background-color: var(--button-bg-color);
+    color: #24232C;
+    min-height: 56px;
+    text-align: center;
+    line-height: 21.12px;
+    cursor: pointer;
+
+}
