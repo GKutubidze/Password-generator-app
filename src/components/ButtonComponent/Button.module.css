@@ -3,9 +3,12 @@
     width: 100%;
     background-color: var(--button-bg-color);
     color: #24232C;
-    min-height: 56px;
+    min-height: 54px;
     text-align: center;
     line-height: 21.12px;
     cursor: pointer;
+    border: 2px solid transparent;
+
 
 }
+

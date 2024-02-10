@@ -15,7 +15,6 @@
 }
 .passwordOutput::placeholder {
   font-size: 24px;
-  color: var(--text-color);
 }
 .copied {
   display: none;
@@ -26,6 +25,8 @@
   margin-left: -15%;
   cursor: pointer;
 }
+
+ 
 
 @media screen and (min-width: 768px) {
   .passwordOutput{

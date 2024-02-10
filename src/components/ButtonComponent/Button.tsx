@@ -37,7 +37,7 @@ const Button = (props: Props) => {
 
   return (
     <div className={styles.main}>
-      <button onClick={handleGenerate}>GENERATE &rarr;</button>
+      <button onClick={handleGenerate} className={styles.butt}>GENERATE &rarr;</button>
     </div>
   );
 };

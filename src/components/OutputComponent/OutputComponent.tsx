@@ -29,7 +29,7 @@ const OutputComponent = (props: Props) => {
         type="text"
         value={generatedPassword}
         readOnly
-        placeholder="PTx1f5DaFX"
+        placeholder="P4$5W0rD!"
         className={styles.passwordOutput}
       />
        {cklicked&&<p className={styles.copied}>COPIED</p>}
