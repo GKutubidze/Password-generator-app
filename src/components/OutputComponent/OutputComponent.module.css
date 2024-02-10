@@ -1,45 +1,44 @@
 .output {
-    background-color: var(--input-bg-color);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 343px;
-  }
+  background-color: var(--input-bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 343px;
+}
 
-  .passwordOutput {
-    all: unset;
-    min-height: 64px;
-    background-color: var(--input-bg-color);
-    padding-left: 16px;
+.passwordOutput {
+  all: unset;
+  min-height: 64px;
+  background-color: var(--input-bg-color);
+  padding-left: 16px;
+  font-size: 21px;
+}
+.passwordOutput::placeholder {
+  font-size: 24px;
+  color: var(--text-color);
+}
+.copied {
+  display: none;
+  color: var(--button-bg-color);
+  margin-right: 16px;
+}
+.copy {
+  margin-left: -15%;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .passwordOutput{
     font-size: 24px;
+
   }
-  .passwordOutput::placeholder {
-    font-size: 24px;
-    color: var(--text-color);
-    
+  .copied {
+    display: block;
   }
- .copied{
-   
-    display: none;
-    color:var(--button-bg-color) ;
-    margin-right: 16px;
- }
+  .output {
+    width: 540px;
+  }
   .copy {
-   margin-left: -15%;
-    cursor: pointer;
+    margin-right: 24px;
   }
-
-
-  @media screen and (min-width: 768px) {
-    .copied{
-      display:block;
-     }
-    .output{
-      width: 540px;
-    }
-    .copy {
-      margin-right: 24px;
-     }
-   
-  }
-  
+}
